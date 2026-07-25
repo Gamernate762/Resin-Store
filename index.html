@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.ico">
+  
+  <title>Nathan's Resin Charm Shop</title>
+
+  <style>
+
+.slideshow-container{
+  width:280px;
+  height:280px;
+  margin:auto;
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  border:2px solid var(--orange);
+  background:#171717;
+  box-shadow:0 0 20px rgba(255,122,0,0.2);
+}
+
+.slideshow-container img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+.slide-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.7);
+  border:none;
+  color:white;
+  font-size:1.5rem;
+  padding:10px 14px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.slide-btn:hover{
+  background:var(--orange);
+  color:black;
+}
+
+.prev{
+  left:10px;
+  border-radius:10px;
+}
+
+.next{
+  right:10px;
+  border-radius:10px;
+}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+          }
+      
+          html{
+      scroll-behavior:smooth;
+          }
+      
+          body{
+      background:#0d0d0d;
+      color:white;
+      overflow-x:hidden;
+          }
+      
+          :root{
+      --orange:#ff9e00;
+      --dark:#111111;
+      --light-dark:#1a1a1a;
+      --text:#f5f5f5;
+          }
+      
+          /* NAVBAR */
+      
+          nav{
+      width:100%;
+      padding:18px 8%;
+      background:rgba(0,0,0,0.92);
+      backdrop-filter:blur(8px);
+      position:sticky;
+      top:0;
+      z-index:999;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:2px solid var(--orange);
+          }
+      
+          .logo{
+      font-size:1.8rem;
+      font-weight:bold;
+      color:var(--orange);
+          }
+      
+          nav ul{
+      display:flex;
+      gap:25px;
+      list-style:none;
+      flex-wrap:wrap;
+          }
+      
+          nav a{
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+          }
+      
+          nav a:hover{
+      color:var(--orange);
+          }
+      
+          /* HERO */
+      
+          .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:80px 10%;
+      background:
+      linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+      radial-gradient(circle at top left, rgba(255,122,0,0.25), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(255,122,0,0.18), transparent 30%);
+          }
+      
+          .hero-content{
+      max-width:900px;
+          }
+      
+          .hero h1{
+      font-size:4rem;
+      color:var(--orange);
+      margin-bottom:20px;
+          }
+      
+          .hero p{
+      font-size:1.2rem;
+      line-height:1.8;
+      color:#ddd;
+      margin-bottom:35px;
+          }
+      
+          .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+          }
+      
+          .btn{
+      padding:14px 28px;
+      border:none;
+      border-radius:40px;
+      cursor:pointer;
+      font-size:1rem;
+      font-weight:bold;
+      text-decoration:none;
+      transition:0.3s;
+          }
+      
+          .btn-primary{
+      background:var(--orange);
+      color:black;
+          }
+      
+          .btn-primary:hover{
+      background:#ff9d42;
+      transform:translateY(-3px);
+          }
+      
+          .btn-secondary{
+      background:transparent;
+      border:2px solid var(--orange);
+      color:white;
+          }
+      
+          .btn-secondary:hover{
+      background:var(--orange);
+      color:black;
+          }
+      
+          /* GENERAL SECTIONS */
+      
+          section{
+      padding:90px 8%;
+          }
+      
+          .section-title{
+      text-align:center;
+      margin-bottom:50px;
+          }
+      
+          .section-title h2{
+      color:var(--orange);
+      font-size:2.8rem;
+      margin-bottom:15px;
+          }
+      
+          .section-title p{
+      color:#bbb;
+      max-width:750px;
+      margin:auto;
+      line-height:1.8;
+          }
+      
+          /* GALLERY */
+      
+          .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+          }
+      
+          .photo-box{
+      height:280px;
+      border:2px dashed var(--orange);
+      background:#171717;
+      border-radius:18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      overflow:hidden;
+      padding:20px;
+      transition:0.3s;
+          }
+      
+          .photo-box:hover{
+      transform:translateY(-6px);
+      box-shadow:0 0 25px rgba(255,122,0,0.3);
+          }
+      
+          .photo-box span{
+      color:#ccc;
+      line-height:1.8;
+      font-size:1.1rem;
+          }
+          img {
+      max-width: 100%; 
+      height: auto; 
+      object-fit:contain;
+      display: block;
+          }
+          }
+      
+          /* CARDS */
+      
+          .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+          }
+      
+          .card{
+      background:#171717;
+      border-radius:18px;
+      padding:30px;
+      border:1px solid rgba(255,122,0,0.2);
+      transition:0.3s;
+          }
+      
+          .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 25px rgba(255,122,0,0.2);
+      border-color:var(--orange);
+          }
+      
+          .card h3{
+      color:var(--orange);
+      margin-bottom:15px;
+      font-size:1.7rem;
+          }
+      
+          .card p{
+      color:#ddd;
+      line-height:1.8;
+          }
+      
+          .price{
+      margin-top:20px;
+      font-size:1.4rem;
+      font-weight:bold;
+          }
+      
+          /* ADDONS */
+      
+          .addons{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+          }
+      
+          .addon-box{
+      background:#171717;
+      border-left:5px solid var(--orange);
+      padding:25px;
+      border-radius:15px;
+      transition:0.3s;
+          }
+      
+          .addon-box:hover{
+      transform:translateY(-6px);
+      box-shadow:0 0 20px rgba(255,122,0,0.2);
+          }
+      
+          .addon-box h4{
+      color:var(--orange);
+      margin-bottom:12px;
+      font-size:1.3rem;
+          }
+      
+          .addon-box p{
+      line-height:1.8;
+      color:#ddd;
+          }
+      
+          /* IDEAS */
+      
+          .ideas{
+      background:linear-gradient(135deg,#111,#1d1d1d);
+      border:1px solid rgba(255,122,0,0.25);
+      padding:50px;
+      border-radius:20px;
+      text-align:center;
+          }
+      
+          .ideas h3{
+      font-size:2rem;
+      color:var(--orange);
+      margin-bottom:20px;
+          }
+      
+          .ideas p{
+      line-height:1.9;
+      color:#ddd;
+      max-width:850px;
+      margin:auto;
+          }
+      
+          /* CONTACT */
+      
+          .contact-box{
+      background:#171717;
+      border-radius:20px;
+      padding:45px;
+      max-width:700px;
+      margin:auto;
+      text-align:center;
+      border:1px solid rgba(255,122,0,0.25);
+          }
+      
+          .contact-box h3{
+      color:var(--orange);
+      font-size:2rem;
+      margin-bottom:20px;
+          }
+      
+          .contact-box p{
+      color:#ddd;
+      margin-bottom:25px;
+      line-height:1.8;
+          }
+      
+          .socials{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:15px;
+          }
+      
+          .social-btn{
+      background:var(--orange);
+      color:black;
+      padding:12px 24px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+          }
+      
+          .social-btn:hover{
+      transform:scale(1.05);
+          }
+      
+          /* FOOTER */
+      
+          footer{
+      padding:30px;
+      text-align:center;
+      border-top:2px solid var(--orange);
+      background:black;
+      color:#aaa;
+          }
+      
+          /* MOBILE */
+      
+          @media(max-width:768px){
+      
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+      
+      .hero h1{
+        font-size:2.8rem;
+      }
+      
+      .hero p{
+        font-size:1rem;
+      }
+      
+      .ideas{
+        padding:30px;
+      }
+      
+          }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">🧿 Nathan's Resin Charm Shop</div>
+
+    <ul>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#addons">Add-Ons</a></li>
+      <li><a href="#customs">Custom Ideas</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>★Handmade Resin Art & Charms★</h1>
+
+      <p>
+        Welcome to my craft shop! I create handmade resin pieces filled with
+        color, sparkle, and personality. Every charm is poured, polished,
+        and finished with care. From simple shapes to layered art pieces,
+        each charm is unique and crafted to brighten your bag, keys, or collection.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#shop" class="btn btn-primary">★Shop Charms★</a>
+        <a href="https://codehs.com/sandbox/orangehornet8864/the-gallery/run" class="btn btn-secondary">★View The Gallery★</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- GALLERY -->
+
+  <section id="gallery">
+
+    <div class="section-title">
+
+      <h2>★Gallery★</h2>
+
+      <p>
+        These are some of the materials, and charms made I have!
+      </p>
+
+    </div>
+
+    <div class="gallery">
+
+      <div class="photo-box">
+                <img src="https://codehs.com/uploads/93a44b3f73f76495fe93a212cceb0a9a" alt="Full ">
+              </div>
+
+      <div class="photo-box">
+                <img src="https://codehs.com/uploads/be96f74f4317b2b7561bdc865154e9b6" alt="Full ">
+              </div>
+
+      <div class="photo-box">
+                <img src="https://codehs.com/uploads/0c28c41c9e883e47469d41b555ceb1f0" alt="Full ">
+              </div>
+
+      <div class="photo-box">
+        <img src="https://codehs.com/uploads/dac8f78a074492decc89214208d24bb7" alt="Full ">
+      </div>
+
+      <div class="photo-box">
+        <img src="https://codehs.com/uploads/fbb61e2e17e0f07cab2f867ebe2ce4ef" alt="Full ">
+      </div>
+
+      <div class="photo-box">
+        <img src="https://codehs.com/uploads/5c403fec89b3232608caa5f52c071301" alt="Full ">
+      </div>
+      
+      <div class="photo-box">
+          <p> Want to see more? </p>
+          <p></p>
+        <a href="https://codehs.com/sandbox/orangehornet8864/the-gallery/run" target="_blank" class="social-btn">
+        The Gallery 
+        </a>
+        <p></p>
+          <p>Go to this page!</p>
+      </div>
+
+    </div>
+
+        
+  </section>
+
+  <!-- SHOP -->
+
+  <section id="shop">
+
+<section id="molds">
+
+  <div class="section-title">
+
+    <h2>🧩 Available Molds</h2>
+
+    <p>
+      Browse molds available for custom charms, with more coming soon!
+    </p>
+
+  </div>
+
+  <div class="slideshow-container">
+
+    <img id="moldSlide" src="https://codehs.com/uploads/df96035938120f230d4bee94a6e03736" alt="Mold Preview">
+
+    <button class="slide-btn prev" onclick="changeSlide(-1)">
+      ❮
+    </button>
+
+    <button class="slide-btn next" onclick="changeSlide(1)">
+      ❯
+    </button>
+
+  </div>
+
+</section>
+    <div class="section-title">
+
+      <h2>$Charm Prices$</h2>
+
+      <p>
+        Pick from premade designs or request a custom charm made exactly
+        how you want it.
+      </p>
+
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <h3>✨ Premade Charms</h3>
+
+        <p>
+          Price depending on added addons. Receive on the spot and take home same day.
+          Restocks happen after custom orders or depending on stock.
+          Buy 2 and get 20% off.
+        </p>
+
+        <div class="price">$4 - $12</div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>🧿 Custom Charms</h3>
+
+        <p>
+          Fully customizable resin pieces with layered art, glitter,
+          mica powder, flakes, colors, and more.
+          3-day curing delay required.
+          Pre-order and contact information needed.
+        </p>
+
+        <div class="price">$8 - $35</div>
+
+      </div>
+
+      <div class="card">
+
+        <h3>🔥 Hot Glue Charms</h3>
+
+        <p>
+          Fully hot glue charms available with only a 1-day delay.
+          Paint add-ons recommended.
+        </p>
+
+        <div class="price">$2 Each</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ADDONS -->
+
+  <section id="addons">
+
+    <div class="section-title">
+
+      <h2>✨Add-Ons & Extras✨</h2>
+      
+      <p>
+        Customize your charm with colors, layers, glitter,
+        hardware, and unique finishes.
+      </p>
+
+    </div>
+
+    <div class="addons">
+
+      <div class="addon-box">
+        <h4>🎨 Simple Add-Ons</h4>
+
+        <p>
+          Colors: +50¢<br>
+          Flakes: +$3<br>
+          Mica Powder: +$4<br>
+          Paint/Marker Designs: +$1
+        </p>
+      </div>
+
+      <div class="addon-box">
+        <h4>🔥 Hot Glue Designs</h4>
+
+        <p>
+          +$1 - $4 depending on complexity and detail, for backgrounds or textures. fully hot glue charms avalible.
+          Counts as a "Simple Addon".
+        </p>
+      </div>
+
+      <div class="addon-box">
+        <h4>🔗 Keychain Hardware</h4>
+
+        <p>
+          +$2 - $4 depending on availability. Makes the charms easier to use as 
+          keychains for all types of charms, often customs and hot glue charms.
+        </p>
+      </div>
+
+      <div class="addon-box">
+        <h4>🌈 Double Layer Pour</h4>
+
+        <p>
+          +$3 - $5 for layered colors and effects without mixing. 
+          Adds for a great design but more on the more complex side.
+        </p>
+      </div>
+
+      <div class="addon-box">
+        <h4>🖼️ Sealed Photos & items</h4>
+
+        <p>
+          +$6 - $10 depending on the sealing process and item type. Recomended
+          done using a premade charm and hot glue for a faster process, often just a 
+          day. Double pours will cost and takes 3-4 days.
+        </p>
+      </div>
+
+      <div class="addon-box">
+        <h4>📥 Nfc Tags</h4>
+
+        <p>
+          +$3, A white circle NFC tag (NTAG215) put into the charm. These tapped on
+          phones with nfc readers such as iphones or newer androids can lead to websites, 
+          videos, photos, phone numbers, and more! (recommended added as a sealed item).
+        </p>
+      </div>
+
+      <div class="addon-box">
+        <h4>💎 Special Finish Deal</h4>
+
+        <p>
+          Customs with only simple add-ons qualify for
+          Buy 2 Get 30% Off.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CUSTOM IDEAS -->
+
+  <section id="customs">
+
+    <div class="ideas">
+
+      <h3>💡 Custom Ideas Welcome</h3>
+
+      <p>
+        Have a unique charm idea? Glitter? Layered art?
+        Character-inspired designs? I’m open to trying new
+        concepts as long as they’re doable. Prices vary depending
+        on materials and complexity.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="section-title">
+
+      <h2>★Contact & Orders★</h2>
+
+      <p>
+        These are ways to contact me or order! more ways coming soon.
+      </p>
+
+    </div>
+
+    <div class="contact-box">
+
+      <h3>📩 Get In Touch</h3>
+
+      <p>
+        Message me for custom orders, questions, or availability.
+      </p>
+
+      <div class="socials">
+
+        <a href="mailto:alvareznathan079@gmail.com" class="social-btn"> 
+        ★ Email Me ★
+        </a>
+        <a href="tel:+19096884924" target="_blank" class="social-btn">
+        ★ Text Me ★
+        </a>
+        <a target="_blank" class="social-btn">
+        !!!Desclaimer!!! only for people in my local area for now.
+        </a>
+        <a target="_blank" class="social-btn">
+        Other websites and online orders coming soon!
+        </a>
+        <a href="https://Gamernate762.github.io/" target="_blank" class="social-btn">
+        -About the seller-
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    &copy; 2026 ★Nathans Resin Charm Shop★ • Handmade With Hopes and Dreams, Coded with too much time.
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    // Smooth scrolling navigation
+
+    document.querySelectorAll('nav a').forEach(anchor => {
+
+      anchor.addEventListener('click', function(e){
+
+        e.preventDefault();
+
+        const target = document.querySelector(
+          this.getAttribute('href')
+        );
+
+        if(target){
+
+          target.scrollIntoView({
+            behavior:'smooth'
+          });
+
+        }
+
+      });
+
+    });
+
+    // Scroll animation
+
+    const animatedItems = document.querySelectorAll(
+      '.card, .photo-box, .addon-box'
+    );
+
+    const observer = new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0px)';
+
+        }
+
+      });
+
+    }, {
+      threshold:0.1
+    });
+
+    animatedItems.forEach(item => {
+
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(40px)';
+      item.style.transition = '0.8s ease';
+
+      observer.observe(item);
+
+    });
+
+  </script>
+<script>
+
+const moldImages = [
+
+  "https://codehs.com/uploads/df96035938120f230d4bee94a6e03736",
+  "https://codehs.com/uploads/97928aedb58302d7911250f9ce14184f",
+  "https://codehs.com/uploads/8200ed78c3587297d3339925b6c1f1ff",
+  "https://codehs.com/uploads/10d339b2fd8791499173a0c7ab9c8e28"
+
+];
+
+let currentSlide = 0;
+
+const slideImage = document.getElementById("moldSlide");
+
+function changeSlide(direction){
+
+  currentSlide += direction;
+
+  if(currentSlide >= moldImages.length){
+    currentSlide = 0;
+  }
+
+  if(currentSlide < 0){
+    currentSlide = moldImages.length - 1;
+  }
+
+  slideImage.src = moldImages[currentSlide];
+
+}
+
+// OPTIONAL AUTO SLIDESHOW
+
+setInterval(() => {
+
+  changeSlide(1);
+
+}, 6400);
+
+</script>
+</body>
+</html>
