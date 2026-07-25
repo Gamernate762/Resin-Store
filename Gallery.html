@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="favicon.ico">
+
+<title>Resin Charm Gallery</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#0d0d0d;
+  color:white;
+  overflow-x:hidden;
+}
+
+:root{
+  --orange:#ff9e00;
+}
+
+/* NAV */
+
+nav{
+  width:100%;
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:black;
+  border-bottom:2px solid var(--orange);
+  position:sticky;
+  top:0;
+  z-index:999;
+}
+
+.logo{
+  color:var(--orange);
+  font-size:1.8rem;
+  font-weight:bold;
+}
+
+.nav-buttons{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.nav-btn{
+  padding:12px 22px;
+  background:transparent;
+  border:2px solid var(--orange);
+  color:white;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.nav-btn:hover{
+  background:var(--orange);
+  color:black;
+  transform:translateY(-3px);
+}
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  padding:80px 8% 50px;
+  background:
+  radial-gradient(circle at top left, rgba(255,122,0,0.2), transparent 30%),
+  radial-gradient(circle at bottom right, rgba(255,122,0,0.15), transparent 30%);
+}
+
+.hero h1{
+  color:var(--orange);
+  font-size:4rem;
+  margin-bottom:20px;
+}
+
+.hero p{
+  color:#ccc;
+  max-width:700px;
+  margin:auto;
+  line-height:1.8;
+  font-size:1.1rem;
+}
+
+/* CATEGORY */
+
+.category{
+  padding:60px 8%;
+}
+
+.category-title{
+  font-size:2.5rem;
+  color:var(--orange);
+  margin-bottom:35px;
+  text-align:center;
+}
+
+/* GALLERY GRID */
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+.gallery-item{
+  background:#171717;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(255,122,0,0.25);
+  transition:0.3s;
+  position:relative;
+}
+
+.gallery-item:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 25px rgba(255,122,0,0.25);
+}
+
+.gallery-item img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  transition:0.4s ease;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.05);
+}
+
+.gallery-label{
+  padding:15px;
+  text-align:center;
+  font-weight:bold;
+  color:var(--orange);
+  background:#111;
+  border-top:1px solid rgba(255,122,0,0.2);
+}
+
+/* ABOUT SECTION */
+
+.about-maker{
+  padding:80px 8%;
+}
+
+.about-box{
+  max-width:900px;
+  margin:auto;
+  background:#171717;
+  border:1px solid rgba(255,122,0,0.25);
+  border-radius:25px;
+  padding:50px;
+  text-align:center;
+}
+
+.about-box h2{
+  color:var(--orange);
+  font-size:2.5rem;
+  margin-bottom:20px;
+}
+
+.about-box p{
+  color:#ddd;
+  line-height:1.9;
+  margin-bottom:30px;
+}
+
+.about-btn{
+  display:inline-block;
+  padding:14px 30px;
+  background:var(--orange);
+  color:black;
+  text-decoration:none;
+  border-radius:35px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.about-btn:hover{
+  transform:scale(1.05);
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:2px solid var(--orange);
+  background:black;
+  color:#999;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .hero h1{
+    font-size:2.8rem;
+  }
+
+  nav{
+    flex-direction:column;
+    gap:15px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+  <div class="logo">
+    🧿 Nathan's Resin Gallery
+  </div>
+
+  <div class="nav-buttons">
+
+    <!-- BACK BUTTON -->
+
+    <a href="https://codehs.com/sandbox/orangehornet8864/resin-store/run" class="nav-btn">
+      ← Back To Shop
+    </a>
+
+    <!-- ABOUT MAKER BUTTON -->
+
+    <a href="https://codehs.com/sandbox/orangehornet8864/aboutme/run" class="nav-btn">
+      ★About The Maker★
+    </a>
+
+  </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <h1>★Charm Gallery★</h1>
+
+  <p>
+    Explore finished resin charms, colorful materials,
+    and behind-the-scenes crafting processes. Blank areas are 
+    set for more to come!
+  </p>
+
+</section>
+
+<!-- FINISHED CHARMS -->
+
+<section class="category">
+
+  <h2 class="category-title">
+    ✨ Finished Charms
+  </h2>
+
+  <div class="gallery-grid">
+
+    <div class="gallery-item">
+      <img src="https://codehs.com/uploads/8fb281cb5d6582a938790a554a5e713e" alt=" ">
+
+      <div class="gallery-label">
+        Here's a Flareon charm I made for myself, utilizing hot glue after a mika
+        powder background failed. still came out with a nice style!
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://codehs.com/uploads/74acd1cd522ba5576a5cccfc8b1f3ecc" alt=" ">
+
+      <div class="gallery-label">
+        This charm was a charm made durning free time,
+        now selling as a premade charm. This gives custom options 
+        to premade charm buyers.
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://codehs.com/uploads/eff87e9b4ae64a78e650c883f65bbb61" alt=" ">
+
+      <div class="gallery-label">
+        These are a batch of premades using blue ink!
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://codehs.com/uploads/e0f0c1f2ad350f2714fec84b126949b1" alt=" ">
+
+      <div class="gallery-label">
+        While making my first order, i made this charmander one for
+        my brother after he wanted one. this is an example of making one with
+        just a premade charm and hot glue, saving a 3+ day charm into just 1.
+        this is recomended instead of the longer risky double layer process.
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://codehs.com/uploads/8aba6691c08600ee27ce1b6d28448fd2" alt=" ">
+
+      <div class="gallery-label">
+        Heres a charm part of my first order, suprisingly also related to the game series, pokemon! Although the bubble at the bottom 
+        as the only mistake, this is a fully double pour with just clear resin.
+        this also shows a keychain attachment, securily on there for eveyday use.
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://codehs.com/uploads/696c5a53fddf1d456d6966c33b2bb1c5" alt=" ">
+
+      <div class="gallery-label">
+        This charm was a fully hot glue charm, using an NFC (NTAG215) charm. This 
+        was made as a premade to allow others to get a nfc charm without ordering a custom.
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="image.jpg" alt=" ">
+
+      <div class="gallery-label">
+        Empty Slot Ready For Another Photo!
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROCESS -->
+
+<section class="category">
+
+  <h2 class="category-title">
+    🎨 Crafting Process
+  </h2>
+
+  <div class="gallery-grid">
+
+    <div class="gallery-item">
+      <img src="https://codehs.com/uploads/c06b47efd801d6a77654ef0a4e94fa0f" alt=" ">
+      <img src="https://codehs.com/uploads/973bb49409f9490d3bca280ec959c89f" alt=" ">
+
+      <div class="gallery-label">
+        These images show how I seal photos, such as my flareon in resin. The mika 
+        powder background how it was originally supposed to look is visible, with my mixing 
+        spoon. It also counts as a double layer pour, with extra resin used to make 
+        premade charms, those being clear from the top of the flareon charm being clear.
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://codehs.com/uploads/6e753d68c8b7a9980398108879163b1a" alt=" ">
+      <img src="https://codehs.com/uploads/8d5f33a4f90cf705f27a4c5455f50762" alt=" ">
+
+      <div class="gallery-label">
+        This is the process of making the charmander charm using the method
+        that only needs a premade chsrm. the background is made separtly to customize
+        the usually hot glue-white background. a keychain chain was then added to
+        make it into a charm.
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://codehs.com/uploads/75e022fc497acade1573c68f9522e808" alt=" ">
+      <img src="https://codehs.com/uploads/dad5a010c7f138bf100b891fa7c5b526" alt=" ">
+
+      <div class="gallery-label">
+        This shows how I got the image, and how I put the keychain attachment
+        on there (image used credits to @pokekaily42 on devenart). Customly made
+        for someone inspired by my own flareon charm, with a few delays due to 
+        school reasons.
+      </div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="image.jpg" alt=" ">
+      <img src="image.jpg" alt=" ">
+
+      <div class="gallery-label">
+        Empty Slot Ready For Another Photo!
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="about-maker">
+
+  <div class="about-box">
+
+    <h2>💡 About The Maker</h2>
+
+    <p>
+      Every resin piece is handmade with creativity, patience,
+      and experimentation. From layered pours to glitter finishes,
+      each charm is carefully crafted to make something unique
+      and full of personality. Want to learns more about me?
+      just click "learn more" below!
+    </p>
+
+    <a href="Gamernate762.github.io" class="about-btn">
+      Learn More
+    </a>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  &copy; 2026 ★Nathan's Resin Charm Shop★ • Handmade With spare time and a computer for coding.
+</footer>
+
+<script>
+
+// Back button fallback
+
+const backButtons = document.querySelectorAll(".back-button");
+
+backButtons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    if(document.referrer !== ""){
+
+      history.back();
+
+    } else {
+
+      window.location.href = "index.html";
+
+    }
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
